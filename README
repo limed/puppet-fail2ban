@@ -1,0 +1,10 @@
+Fail2ban module that is heavily based of example42
+
+Variables to set:
+$fail2ban_ignore ( default: "*.$domain", "127.0.0.1') - Sets the ip's to ignore
+$fail2ban_bantime ( default: 1800 ) - Sets ban time in seconds
+$fail2ban_maxretry ( default: 3 ) - How many retries before we ban
+$fail2ban_destemail ( default: root@$domain ) - Where to send report to
+
+Module usage
+include fail2ban

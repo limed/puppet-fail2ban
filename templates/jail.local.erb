@@ -1,0 +1,22 @@
+# Copyright (c) 2008 Oregon State University - Network Engineering
+# All rights reserved.
+#
+# File managed by puppet
+
+[DEFAULT]
+
+# "ignoreip" can be an IP address, a CIDR or a DNS host
+ignoreip = <%= scope.lookupvar('fail2ban::params::ignore').each do |ignore| %><%= ignore %> <% end %>
+bantime = <%= scope.lookupvar('fail2ban::params::bantime') %>
+maxretry = <%= scope.lookupvar('fail2ban::params::maxretry') %>
+
+# "backend" specifies the backend used to get files modification. Available
+# options are "gamin", "polling" and "auto".
+# yoh: For some reason Debian shipped python-gamin didn't work as expected
+#      This issue left ToDo, so polling is default backend for now
+backend = polling
+
+#
+# Destination email address used solely for the interpolations in
+# jail.{conf,local} configuration files.
+destemail = <%= scope.lookupvar('fail2ban::params::destemail') %>
